@@ -3,11 +3,11 @@
 var moment = require('moment-timezone');
 var pluralize = require('pluralize');
 
-var violet = require('../lib/violet.js').script();
-var violetClientTx = require('../lib/violetClientTx.js')(violet);
-var violetTime = require('../lib/violetTime.js')(violet);
+var violet = require('violet-conversations/lib/violet').script();
+var violetClientTx = require('violet-conversations/lib/violetClientTx')(violet);
+var violetTime = require('violet-conversations/lib/violetTime')(violet);
 
-var violetSFStore = require('../lib/violetStoreSF.js')(violet);
+var violetSFStore = require('violet-conversations/lib/violetStoreSF')(violet);
 violetSFStore.store.propOfInterest = {
   'Lead*': ['Name*', 'Company*'],
   'Opportunity*': ['Name*', 'StageName*', 'Probability*', 'Amount*'],

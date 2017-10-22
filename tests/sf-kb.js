@@ -1,8 +1,8 @@
 
-var violet = require('../lib/violet.js').script();
-var violetTime = require('../lib/violetTime.js')(violet);
+var violet = require('violet-conversations/lib/violet').script();
+var violetTime = require('violet-conversations/lib/violetTime')(violet);
 
-var violetSFStore = require('../lib/violetSFStore.js');
+var violetSFStore = require('violet-conversations/lib/violetSFStore');
 
 violet.setPersistentStore(violetSFStore.store);
 

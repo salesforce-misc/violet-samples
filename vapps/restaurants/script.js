@@ -1,7 +1,7 @@
 'use strict';
 
-var violet = require('../../lib/violet').script();
-var violetTime = require('../../lib/violetTime')(violet);
+var violet = require('violet-conversations/lib/violet').script();
+var violetTime = require('violet-conversations/lib/violetTime')(violet);
 
 var yelpSvc = require('./yelp.js');
 

@@ -3,10 +3,10 @@
 var fs = require('fs');
 var path = require('path');
 
-var violet = require('../../lib/violet').script();
-var violetTime = require('../../lib/violetTime')(violet);
-var itemList = require('../../lib/violetList.js')(violet, 'Items', 'item', 'items', 'text');
-var categoryList = require('../../lib/violetList.js')(violet, 'Categories', 'category', 'categories', 'text');
+var violet = require('violet-conversations/lib/violet').script();
+var violetTime = require('violet-conversations/lib/violetTime')(violet);
+var itemList = require('violet-conversations/lib/violetList.js')(violet, 'Items', 'item', 'items', 'text');
+var categoryList = require('violet-conversations/lib/violetList.js')(violet, 'Categories', 'category', 'categories', 'text');
 
 var quipSvc = require('./svc.js');
 var Promise = require('bluebird');

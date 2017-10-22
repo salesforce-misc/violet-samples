@@ -1,6 +1,6 @@
 'use strict';
 
-var violet = require('../lib/violet.js').script();
+var violet = require('violet-conversations/lib/violet').script();
 
 
 violet.addInputTypes({

@@ -1,7 +1,7 @@
 'use strict';
 
-var violet = require('../lib/violet.js').script();
-var violetClientTx = require('../lib/violetClientTx.js')(violet);
+var violet = require('violet-conversations/lib/violet').script();
+var violetClientTx = require('violet-conversations/lib/violetClientTx')(violet);
 
 violet.respondTo([
       "Hello"

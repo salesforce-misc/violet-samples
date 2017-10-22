@@ -77,7 +77,7 @@ Scripts are initialized and loaded in `server.js` which amongst other things all
 Every voice script should start will typically start with declaring `violet` for use
 throughout:
 ```javascript
-var violet = require('../lib/violet.js').script();
+var violet = require('violet-conversations/lib/violet').script();
 ```
 
 See `examples/tutorial.js` for documentation on how to build a skill.
@@ -187,7 +187,7 @@ any deployed platform): `V_SFDC_CLIENT_ID`, `V_SFDC_CLIENT_SECRET`,
 To include the plugin in your code you would need to add this after the violet
 script:
 ```javascript
-var violetStoreSF = require('../lib/violetStoreSF.js')(violet);
+var violetStoreSF = require('violet-conversations/lib/violetStoreSF')(violet);
 ```
 
 
@@ -230,7 +230,7 @@ violet.respondTo(
 
 ### Timed delay
 ```javascript
-var violetTime = require('../lib/violetTime.js')(violet);
+var violetTime = require('violet-conversations/lib/violetTime')(violet);
 ```
 
 Possible spoken commands:
@@ -244,7 +244,7 @@ violetTime.repeat(48*60, ()=>{ violet.addGoal('checkIn'); });
 
 ### Violet Client Integration
 ```javascript
-var violetClientTx = require('../lib/violetClientTx.js')(violet);
+var violetClientTx = require('violet-conversations/lib/violetClientTx')(violet);
 ```
 
 Allows setting voice and creating alerts (the latter needs testing)
