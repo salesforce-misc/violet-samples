@@ -1,7 +1,7 @@
 {
   "name": "Violet Conversation Sample",
   "description": "A Sample Voice Conversation Using Violet",
-  "repository": "https://github.com/sfxi/violet-conversations",
+  "repository": "https://github.com/salesforce/violet-samples",
   "keywords": ["node", "voice", "alexa"],
   "env": {
     "SCRIPT_NAME": {
