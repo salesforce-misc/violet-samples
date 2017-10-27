@@ -1,5 +1,5 @@
 {
-  "name": "violet-conversations",
+  "name": "violet-samples",
   "version": "0.0.1",
   "description": "alexa skill",
   "main": "server.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vineet-sinha/violet-conversations.git"
+    "url": "git+https://github.com/salesforce/violet-samples.git"
   },
   "bugs": {
-    "url": "https://github.com/vineet-sinha/violet-conversations/issues"
+    "url": "https://github.com/salesforce/violet-samples/issues"
   },
-  "homepage": "https://github.com/vineet-sinha/violet-conversations#readme",
+  "homepage": "https://github.com/salesforce/violet-samples#readme",
   "dependencies": {
-    "violet-conversations": "git+https://sfxishare:ab171bfbf042c9217e88a9ade87eb12fcfe0cd22@github.com/sfxi/violet-conversations.git",
+    "violet-conversations": "git+https://sfxishare:ab171bfbf042c9217e88a9ade87eb12fcfe0cd22@github.com/salesforce/violet-conversations.git",
     "request": "^2.81.0",
     "request-promise": "^4.2.1",
     "soundex": "^0.2.1",
