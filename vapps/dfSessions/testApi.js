@@ -42,6 +42,19 @@ var loadAllSessions = () => {
       });
   }, 2*1000);
 };
+var loadSessionsByDate = () => {
+  setTimeout(()=>{
+    response.load({
+      objName:'sessions',
+      filter: "session_start_time BETWEEN '2017-11-08 08:00:00'::timestamp AND '2017-11-08 22:00:00'::timestamp",
+      // filter: "session_start_time BETWEEN '2017-11-08 08:00:00'::timestamp AND now()::timestamp",
+      queryXtra: 'limit 5'
+    }).then((records)=>{
+        console.log('load results:', records);
+        console.log('loaded ' + records.length + ' records');
+      });
+  }, 2*1000);
+};
 var loadLeadershipSessions = () => {
   setTimeout(()=>{
     response.load({objName:'sessions', filter: "session_theme like '%Leadership%'", queryXtra: 'limit 3'})
