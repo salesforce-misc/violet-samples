@@ -1,3 +1,6 @@
+/* Copyright (c) 2017-present, salesforce.com, inc. All rights reserved */
+/* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
 var quipSvc = new require('./svc.js');
 var utils = new require('./utils.js');
 

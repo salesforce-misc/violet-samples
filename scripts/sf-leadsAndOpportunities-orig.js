@@ -1,3 +1,6 @@
+/* Copyright (c) 2017-present, salesforce.com, inc. All rights reserved */
+/* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
 'use strict';
 
 // Inspired by: http://blog.jeffdouglas.com/2015/08/12/alexa-for-salesforce-with-amazon-echo/
