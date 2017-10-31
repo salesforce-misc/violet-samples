@@ -1,10 +1,10 @@
 'use strict';
 
-var violetSrvr = require('./lib/violetSrvr.js')('/alexa');
+var violetSrvr = require('violet-conversations/lib/violetSrvr')('/alexa');
 violetSrvr.listScriptsAt('/');
 var srvrInstance = violetSrvr.createAndListen(process.env.PORT || 8080);
 
-violetSrvr = require('./lib/violetClientTx.js')(violetSrvr, srvrInstance);
+violetSrvr = require('violet-conversations/lib/violetClientTx')(violetSrvr, srvrInstance);
 
 // violetSrvr.loadScript('../examples/demo1.js', 'einstein');
 // violetSrvr.loadScript('../examples/tutorial.js', 'einstein');
