@@ -3,7 +3,7 @@
 # violet-samples
 
 `violet-samples` is a list of example voice app/bot scripts (powered-by
-  [violet-conversations](https://github.com/salesforce/violet-conversations). This
+  [violet-conversations](https://github.com/salesforce/violet-conversations)). This
 project is configured to create a skill at the `alexa/einstein` end point.
 
 ## Table Of Contents
@@ -17,7 +17,7 @@ project is configured to create a skill at the `alexa/einstein` end point.
 
 ## Getting Started
 
-This project contains the Conversation Engine and a number of Scripts that we have built and can be used as the basis of your Voice Application. To use the Engine and the Scripts, they need to run in the cloud so that Amazon's voice servers can access it. These can also be run locally via a non-voice (web-only) interface.
+This project contains a number of Scripts that we have built and can be used as the basis of your Voice Application. To use the Scripts, they need to run in the cloud so that Amazon's voice servers can access it. These can also be run locally via a non-voice (web-only) interface.
 
 ### Setup
 
@@ -28,7 +28,7 @@ This project contains the Conversation Engine and a number of Scripts that we ha
 * Download dependencies: `npm install`
 
 * Environment variables: If you are using the Salesforce integration plugin (as used by the Leads & Opportunities Script) you will need to set up variables (for more information see
-the [Persistence](#persistence) plugin section below).
+the [Persistence](https://github.com/salesforce/violet-conversations#persistence) plugin information).
 
 * Run locally: `node <path_to_script>` (the script will print the path to the
 url for the web interface).
