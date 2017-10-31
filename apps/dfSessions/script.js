@@ -58,7 +58,8 @@ violet.addInputTypes({
 
 // cat = industry, session_theme, role, products
 var querySessions = (response, cat, val) => {
-  return response.load({
+  // return response.load({ // <-- bug when loading multiple scripts - plugins do not load
+  return violetStorePG.store.load({
     objName: 'sessions',
     filter: `${cat} ilike '%${val}%' AND session_start_time BETWEEN '2017-11-08 08:00:00'::timestamp AND '2017-11-08 22:00:00'::timestamp`,
     queryXtra: 'order by session_start_time limit 3'
@@ -67,6 +68,7 @@ var querySessions = (response, cat, val) => {
 
 var returnWhenSession = (response, cat, val) => {
   if (!val) return response.say(`Sorry, could not identify ${cat} type`);
+  response.say(`Looking up ${val} ${cat}`);
   return querySessions(response, cat, val)
     .then(rec=>{
       if (!rec) return response.say('Unexpected error');
