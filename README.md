@@ -3,7 +3,7 @@
 # violet-samples
 
 `violet-samples` is a list of example voice app/bot scripts (powered-by
-  `violet-conversations`). This
+  [violet-conversations](https://github.com/salesforce/violet-conversations). This
 project is configured to create a skill at the `alexa/einstein` end point.
 
 ## Table Of Contents
@@ -23,7 +23,7 @@ This project contains the Conversation Engine and a number of Scripts that we ha
 
 * Install Node v6 or greater - if you need to maintain an older version of node, consider using `nvm`.
 
-* Get the code: If you want the latest fixes, we would recommend to get this via git: `git clone git@github.com:sfxi/violet-samples.git`. You can alternatively get the (latest release)[https://github.com/sfxi/violet-samples/releases/latest].
+* Get the code: If you want the latest fixes, we would recommend to get this via git: `git clone git@github.com:salesforce/violet-samples.git`. You can alternatively get the [latest release](https://github.com/salesforce/violet-samples/releases/latest).
 
 * Download dependencies: `npm install`
 
