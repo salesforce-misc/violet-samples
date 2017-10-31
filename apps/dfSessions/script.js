@@ -91,7 +91,7 @@ violet.respondTo(['when is the next [[role]] session'],
   (response) => {
     return returnWhenSession(response, 'role', response.get('role'));
 });
-violet.respondTo(['when is the next [[products]] session'],
+violet.respondTo(['when is the next [[product]] session'],
   (response) => {
-    return returnWhenSession(response, 'products', response.get('products'));
+    return returnWhenSession(response, 'products', response.get('product'));
 });
