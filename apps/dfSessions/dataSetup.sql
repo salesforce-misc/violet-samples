@@ -16,4 +16,4 @@ CREATE TABLE Sessions
   Session_Format char(128),
   Session_Name char(128),
   Session_Abstract char(2048)
-)
+);
