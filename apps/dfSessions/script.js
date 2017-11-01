@@ -34,7 +34,7 @@ violetStorePG.store.propOfInterest = {
 violet.addInputTypes({
   "industry": {
     "type": "industryType",
-    "values": ["Agriculture", "Automotive", "Communications", "Consumer Goods", "Education", "Energy", "Financial Services", "Government", "Healthcare", "Financial Services", "High Tech", "Hospitality/Travel", "Life Sciences", "Manufacturing", "Media", "Nonprofit", "Professional Services", "Retail", "Transportation", "Logistics"]
+    "values": ["Agriculture", "Automotive", "Communications", "Consumer Goods", "Education", "Energy", "Financial Services", "Government", "Healthcare", "High Tech", "Hospitality/Travel", "Life Sciences", "Manufacturing", "Media", "Nonprofit", "Professional Services", "Retail", "Transportation", "Logistics"]
   },
 
   "theme": {
@@ -45,7 +45,7 @@ violet.addInputTypes({
 
   "role": {
     "type": "roleType",
-    "values": ["Architect", "Consultant", "Developer", "E-Commerce", "Entrepreneur", "Executive", "Finance & Accounting", "Human Resources", "IT", "Marketing", "Merchandising", "New Customer", "Operations", "Partner", "Consulting", "Partner", "ISV", "Product Management", "Purchasing & Procurement", "Sales", "Salesforce Administrator", "Service & Support", "Technical Architect"]
+    "values": ["Architect", "Consultant", "Developer", "E-Commerce", "Entrepreneur", "Executive", "Finance & Accounting", "Human Resources", "IT", "Marketing", "Merchandising", "New Customer", "Operations", "Partner", "Consulting", "ISV", "Product Management", "Purchasing & Procurement", "Sales", "Salesforce Administrator", "Service & Support", "Technical Architect"]
   },
 
   "product": {
