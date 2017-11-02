@@ -66,26 +66,52 @@ var querySessions = (response, cat, val) => {
   });
 };
 
-var returnWhenSession = (response, cat, val) => {
+var returnSessionInfo = (response, questionType, prettyCat, cat, val) => {
   if (!val) return response.say(`Sorry, could not identify ${cat} type`);
-  response.say(`Looking up ${val} ${cat}`);
+  response.say(`Looking up ${val} ${prettyCat}`);
   return querySessions(response, cat, val)
     .then(rec=>{
       if (!rec) return response.say('Unexpected error');
-      response.say(`Found ${rec.length} sessions.`)
+      console.log(`Found ${rec.length} sessions.`)
+      if (rec.length == 0) {
+        return repsonse.say('Sorry, I could not find any any sessions. Perhaps try asking a Trail Guide');
+      }
       if (rec.length > 0) {
         console.log(rec[0]);
         var startTime = new Date(rec[0].session_start_time);
-        response.say(`The session starts at ${startTime.toLocaleTimeString()}`)
+        var starts   = `starts at ${startTime.toLocaleTimeString()}`;
+        var location = `is in the ${rec[0].room.trim()} at ${rec[0].venue_name.trim()}`;
+        var name     = `is the ${rec[0].session_name.trim()}`;
+        switch (questionType) {
+          case 'when':
+            response.say(`The next ${val} session ${starts}. It ${name} and it ${location}.`)
+            return;
+          case 'where':
+            response.say(`The next ${val} session ${location}. It ${name} and it ${starts}`);
+            return;
+          default: // case 'what'
+            response.say(`The next ${val} session ${name}. It ${starts} and it ${location}`)
+            return;
+        }
       }
     });
 }
 
-var hookCategory = (paramName, dbColName)=>{
+var hookCategory = (prettyName, dbColName)=>{
   violet.respondTo(
-    [`when is the next [[${paramName}]] session`],
+    [`when is the next [[${prettyName}]] session`],
     (response) => {
-      return returnWhenSession(response, dbColName, response.get(paramName));
+      return returnSessionInfo(response, 'when', prettyName, dbColName, response.get(prettyName));
+  });
+  violet.respondTo(
+    [`where is the next [[${prettyName}]] session`],
+    (response) => {
+      return returnSessionInfo(response, 'where', prettyName, dbColName, response.get(prettyName));
+  });
+  violet.respondTo(
+    [`what is the next [[${prettyName}]] session`],
+    (response) => {
+      return returnSessionInfo(response, 'what', prettyName, dbColName, response.get(prettyName));
   });
 }
 hookCategory('industry', 'industry');
