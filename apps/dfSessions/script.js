@@ -81,19 +81,14 @@ var returnWhenSession = (response, cat, val) => {
     });
 }
 
-violet.respondTo(['when is the next [[industry]] session'],
-  (response) => {
-    return returnWhenSession(response, 'industry', response.get('industry'));
-});
-violet.respondTo(['when is the next [[theme]] session'],
-  (response) => {
-    return returnWhenSession(response, 'session_theme', response.get('theme'));
-});
-violet.respondTo(['when is the next [[role]] session'],
-  (response) => {
-    return returnWhenSession(response, 'role', response.get('role'));
-});
-violet.respondTo(['when is the next [[product]] session'],
-  (response) => {
-    return returnWhenSession(response, 'products', response.get('product'));
-});
+var hookCategory = (paramName, dbColName)=>{
+  violet.respondTo(
+    [`when is the next [[${paramName}]] session`],
+    (response) => {
+      return returnWhenSession(response, dbColName, response.get(paramName));
+  });
+}
+hookCategory('industry', 'industry');
+hookCategory('theme', 'session_theme');
+hookCategory('role', 'role');
+hookCategory('product', 'products');
