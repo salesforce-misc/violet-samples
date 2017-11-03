@@ -3,6 +3,8 @@
 
 'use strict';
 
+var Promise = require('bluebird');
+
 var utils = require('violet-conversations/lib/utils');
 var violet = require('violet-conversations/lib/violet').script();
 var violetTime = require('violet-conversations/lib/violetTime')(violet);
@@ -85,20 +87,33 @@ violet.respondTo(['display cache'],
 });
 
 
-var sayTop = (response, category) => {
-  if (!cache.search[category]) {
-    response.say(`Sorry, I do not know anything about ${category}`)
-    return;
+var queryCat = (category) => {
+  var p = Promise.resolve();
+  if (!cache.topCats[category]) { // only checking 'topCats' since it is derived from 'search'
+    p = p.then(_searchAndAggregateFn(category));
   }
-  response.say(`My favorite restaurant is ${cache.search[category][0].name}`)
+  return p.then(()=>{
+    return Promise.resolve({results: cache.search[category], facets: cache.topCats[category]});
+  });
+  // response.say(`Sorry, I do not know anything about ${category}`)
+  // return Promise.resolve();
+}
+var sayTop = (response, category) => {
+  // console.log('sayTop request: ' + category);
+  return queryCat(category).then(({results, facets})=>{
+    // console.log('sayTop rcvd');
+    if (results) response.say(`My favorite restaurant is ${results[0].name}`)
+  });
 }
 var saySummary = (response, category) => {
-  if (!cache.topCats[category]) {
-    response.say(`Sorry, I do not know anything about ${category}`)
-    return;
-  }
-  var cats = cache.topCats[category].filter(c=>{return c.alias !== category;})
-  response.say(`They are mostly ${cats[0].name}, ${cats[1].name}, and ${cats[2].name}`)
+  // console.log('saySummary request: ' + category);
+  return queryCat(category).then(({results, facets})=>{
+    // console.log('saySummary rcvd: ', facets);
+    if (facets) {
+      facets = facets.filter(c=>{return c.alias !== category;})
+      response.say(`They are mostly ${facets[0].name}, ${facets[1].name}, and ${facets[2].name}`)
+    }
+  });
 }
 
 violet.respondTo(['what is your top {recommended|} restaurant'],
