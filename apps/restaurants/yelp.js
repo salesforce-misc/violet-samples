@@ -32,14 +32,15 @@ var searchScanner = module.exports.searchScanner = (searchTerm, categories, proc
   if (categories) params.categories = categories;
 
   return client.search(params).then(response => {
-    console.log('total results: ' + response.jsonBody.total);
-    console.log('results: ' + response.jsonBody.businesses.length);
+    console.log('*** Yelp Searched: ' +  JSON.stringify(params));
+    console.log('  total results: ' + response.jsonBody.total);
+    console.log('  returned results: ' + response.jsonBody.businesses.length);
     processBusinessesCB(response.jsonBody.businesses);
 
     var totalProcessed = offset+response.jsonBody.businesses.length;
 
     delete response.jsonBody.businesses;
-    console.log(response.jsonBody);
+    console.log('  additional metadata: ' + JSON.stringify(response.jsonBody));
 
     if (response.jsonBody.total>totalProcessed && totalProcessed<max)
       return searchScanner(searchTerm, categories, processBusinessesCB, totalProcessed, max);
