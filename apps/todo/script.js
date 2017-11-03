@@ -3,13 +3,11 @@
 
 'use strict';
 
-var fs = require('fs');
-var path = require('path');
-
+var utils = require('violet-conversations/lib/utils');
 var violet = require('violet-conversations/lib/violet').script();
 var violetTime = require('violet-conversations/lib/violetTime')(violet);
-var itemList = require('violet-conversations/lib/violetList.js')(violet, 'Items', 'item', 'items', 'text');
-var categoryList = require('violet-conversations/lib/violetList.js')(violet, 'Categories', 'category', 'categories', 'text');
+var itemList = require('violet-conversations/lib/violetList')(violet, 'Items', 'item', 'items', 'text');
+var categoryList = require('violet-conversations/lib/violetList')(violet, 'Categories', 'category', 'categories', 'text');
 
 var quipSvc = require('./svc.js');
 var Promise = require('bluebird');
@@ -26,7 +24,7 @@ violet.addInputTypes({
   'itemName': {
       type: 'AMAZON.LITERAL',
       // Amazon recommends/asks "to provide several hundred samples or more to address all the variations in slot value words as noted above"
-      sampleValues: fs.readFileSync(path.join(__dirname, 'sampleTasks.txt'), 'utf8').split('\n')
+      sampleValues: utils.loadArrayFromFile('sampleTasks.txt')
   }
 });
 

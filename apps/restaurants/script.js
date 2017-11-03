@@ -3,9 +3,7 @@
 
 'use strict';
 
-var fs = require('fs');
-var path = require('path');
-
+var utils = require('violet-conversations/lib/utils');
 var violet = require('violet-conversations/lib/violet').script();
 var violetTime = require('violet-conversations/lib/violetTime')(violet);
 
@@ -13,7 +11,9 @@ var yelpSvc = require('./yelp.js');
 
 module.exports = violet;
 
-var mainCats = fs.readFileSync(path.join(__dirname, 'mainCategories.txt'), 'utf8').split('\n');
+var mainCats = utils.loadArrayFromFile('mainCategories.txt');
+console.log('mainCats: ', mainCats)
+mainCats = [];
 
 violet.addInputTypes({
   'category': {
