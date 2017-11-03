@@ -14,7 +14,7 @@ project is configured to create a skill at the `alexa/einstein` end point.
 |[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/salesforce/violet-samples&env[SCRIPT_NAME]=apps/todo/script.js) | [apps/todo/script.js](apps/todo/script.js) | Manage your todo list powered by Quip |
 |[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/salesforce/violet-samples&env[SCRIPT_NAME]=scripts/diabetes-stoplight.js) | [scripts/diabetes-stoplight.js](scripts/diabetes-stoplight.js) | Diabetes support at home for patients by implementing [Stoplight](https://www.sutterhealth.org/about/spotlight-tools) tool |
 |[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/salesforce/violet-samples&env[SCRIPT_NAME]=apps/restaurants/script.js) | [apps/restaurants/script.js](apps/restaurants/script.js) | A sophisticated tool to help you find restaurants close by |
-||[apps/dfSessions/script.js](blob/master/apps/dfSessions/script.js) | An event information kiosk (built for Dreamforce) |
+||[apps/dfSessions/script.js](apps/dfSessions/script.js) | An event information kiosk (built for Dreamforce) |
 
 
 ## Table Of Contents
