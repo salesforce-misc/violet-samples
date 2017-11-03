@@ -23,7 +23,6 @@ project is configured to create a skill at the `alexa/einstein` end point.
   * [Setup](#setup)
   * [Deploying](#deploying)
 * [Contribution/Supporting](#contributionsupporting)
-* [Filing issues](#filing-issues)
 
 
 ## Getting Started
@@ -78,15 +77,4 @@ We appreciate any help. In order of decreasing priority, we would like to see:
 
 * Tests: If you want to make sure that we improve the framework that we don't break a use case that you are depending on - make sure we have an automated test.
 
-## Filing issues
-
-To help us look into any issue please create a document with the following:
-* **Record Type** - Defect or Enhancement?
-* **Date**
-* **Description**
-* **Supporting Information**
-  - If **defect**, please include steps to reproduce AND include Violet-Conversation app logs here.
-  - If **enhancement**, please include use case info here.
-* **Owner** - Who is logging the issue?
-
-Please post any such document in the Violet trailblazer chatter group.
+* File issues: If something is not working as expected, please file an issue on the appropriate project.
