@@ -3,6 +3,9 @@
 
 'use strict';
 
+var fs = require('fs');
+var path = require('path');
+
 var violet = require('violet-conversations/lib/violet').script();
 var violetTime = require('violet-conversations/lib/violetTime')(violet);
 
@@ -10,7 +13,7 @@ var yelpSvc = require('./yelp.js');
 
 module.exports = violet;
 
-var mainCats = ['korean', 'italian', 'french'];
+var mainCats = fs.readFileSync(path.join(__dirname, 'mainCategories.txt'), 'utf8').split('\n');
 
 violet.addInputTypes({
   'category': {
@@ -116,7 +119,7 @@ violet.respondTo(['what restaurants would you recommend'],
       'There are a number of great restaurant here.',
       'There are a number of popular restaurant here.',
     ]);
-    saySummary(response, 'restaurants');
+    return saySummary(response, 'restaurants');
     // response.addGoal('categoryOrTop');
 });
 
@@ -128,7 +131,7 @@ violet.respondTo(['what [[category]] restaurants would you recommend'],
       'There are a number of popular restaurant here.',
     ]);
     var category = response.get('category')
-    saySummary(response, category);
+    return saySummary(response, category);
     // response.addGoal('categoryOrTop');
 });
 
