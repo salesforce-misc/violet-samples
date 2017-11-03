@@ -16,7 +16,7 @@
   },
   "homepage": "https://github.com/salesforce/violet-samples#readme",
   "dependencies": {
-    "violet-conversations": "git+https://sfxishare:ab171bfbf042c9217e88a9ade87eb12fcfe0cd22@github.com/salesforce/violet-conversations.git",
+    "violet-conversations": "git+https://github.com/salesforce/violet-conversations.git",
     "request": "^2.81.0",
     "request-promise": "^4.2.1",
     "soundex": "^0.2.1",
