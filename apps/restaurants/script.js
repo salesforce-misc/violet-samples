@@ -13,15 +13,18 @@ var yelpSvc = require('./yelp.js');
 
 module.exports = violet;
 
-var mainCats = utils.loadArrayFromFile('mainCategories.txt');
-console.log('mainCats: ', mainCats)
-mainCats = [];
+var defaultCatsForCaching = ['korean', 'italian', 'french'];
+defaultCatsForCaching = []; // disable caching during development
+
+// sometimes multiple spoken items map to the same category and category needs to be a single word
+var catAliases = require('./spokenToCategoryAliases.json');
+
+
 
 violet.addInputTypes({
-  'category': {
-      // we eventually want a custom slot type for this
-      type: 'AMAZON.LITERAL',
-      sampleValues: mainCats
+  category: {
+    type: 'categoryType',
+    values: utils.loadArrayFromFile('potentialCategories.txt')
   }
 });
 
@@ -71,7 +74,7 @@ var _searchAndAggregateFn = (cat) => {
 var buildCache = () => {
   var p = yelpSvc.init(lat, lon)
     .then(_searchAndAggregateFn('restaurants'));
-  mainCats.forEach(c=>{
+  defaultCatsForCaching.forEach(c=>{
     p = p.then(_searchAndAggregateFn(c));
   });
     // .then(_searchAndAggregateFn('korean'))
@@ -99,6 +102,7 @@ var queryCat = (category) => {
   // return Promise.resolve();
 }
 var sayTop = (response, category) => {
+  if (catAliases[category]) category = catAliases[category];
   // console.log('sayTop request: ' + category);
   return queryCat(category).then(({results, facets})=>{
     // console.log('sayTop rcvd');

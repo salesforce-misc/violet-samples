@@ -1,0 +1,173 @@
+coffee
+persian
+sandwiches
+italian
+seafood
+japanese
+bars
+pizza
+burgers
+mexican
+vietnamese
+mediterranean
+salad
+cafes
+french
+chinese
+noodles
+thai
+gastropubs
+korean
+delis
+desserts
+ramen
+soup
+bakeries
+lounges
+vegetarian
+hawaiian
+diners
+southern
+vegan
+spanish
+cantonese
+izakaya
+greek
+halal
+pubs
+pakistani
+filipino
+poke
+tacos
+peruvian
+creperies
+turkish
+burmese
+argentine
+ethiopian
+brazilian
+basque
+german
+cheesesteaks
+moroccan
+caribbean
+breweries
+brasseries
+british
+empanadas
+austrian
+laotian
+belgian
+szechuan
+fondue
+tex-mex
+donuts
+falafel
+waffles
+gelato
+portuguese
+eatertainment
+grocery
+mongolian
+russian
+ukrainian
+armenian
+kebab
+african
+scandinavian
+lebanese
+restaurants
+cuban
+butcher
+kosher
+guamanian
+taiwanese
+salvadoran
+hungarian
+malaysian
+syrian
+bagels
+macarons
+cideries
+contemproary american
+breakfast
+brunch
+traditional american
+cocktail bars
+sushi bars
+wine bars
+asian fusion
+tea
+tapas
+small plates
+indian
+steakhouses
+beer bar
+latin american
+middle eastern
+venues
+event spaces
+gluten-free
+tapas bars
+food trucks
+barbeque
+comfort food
+dim sum
+sports bars
+pop-up restaurants
+soul food
+chicken shop
+fast food
+hot dogs
+food stands
+chicken wings
+ice cream and frozen yogurt
+tea rooms
+cajun/creole
+modern european
+juice bars and smoothies
+raw food
+live food
+hot pot
+himalayan
+nepalese
+beer
+wine
+spirits
+street vendors
+fish and chips
+dive bars
+afghan
+seafood markets
+fruits and veggies
+japanese curry
+music venues
+iranian
+whiskey bars
+food court
+specialty food
+caterers
+champagne bars
+jazz
+blues
+convenience stores
+bubble tea
+tiki bars
+meat shops
+performing arts
+strip clubs
+new mexican cuisine
+dance clubs
+south african
+cake shop
+patisserie
+social clubs
+sports clubs
+cheese shops
+pasta shops
+piano bars
+themed cafes
+sri lankan
+beer gardens
+irish pub
+international grocery
