@@ -117,7 +117,7 @@ violet.respondTo(['display cache'],
     response.say('done');
 });
 
-violet.respondTo(["clear cache"],
+violet.respondTo(['clear cache'],
   (response) => {
     var keyNum = o => {return Object.keys(o).length;}
     response.say(`Cache used to have ${keyNum(cache.search)} search queries and ${keyNum(cache.topCats)} category metadata`);
