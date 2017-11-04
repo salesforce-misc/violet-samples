@@ -14,7 +14,7 @@ var yelpSvc = require('./yelp.js');
 module.exports = violet;
 
 var defaultCatsForCaching = ['korean', 'italian', 'french'];
-// defaultCatsForCaching = []; // disable caching during development
+defaultCatsForCaching = []; // disable caching during development
 
 // sometimes multiple spoken items map to the same category and category needs to be a single word
 var catAliases = require('./spokenToCategoryAliases.json');
@@ -91,8 +91,6 @@ var queryCat = (category) => {
   return p.then(()=>{
     return Promise.resolve({results: cache.search[category], facets: cache.topCats[category]});
   });
-  // response.say(`Sorry, I do not know anything about ${category}`)
-  // return Promise.resolve();
 }
 var sayTop = (response, category) => {
   if (catAliases[category]) category = catAliases[category];
