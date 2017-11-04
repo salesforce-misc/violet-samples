@@ -14,7 +14,7 @@ var yelpSvc = require('./yelp.js');
 module.exports = violet;
 
 var defaultCatsForCaching = ['korean', 'italian', 'french'];
-defaultCatsForCaching = []; // disable caching during development
+// defaultCatsForCaching = []; // disable caching during development
 
 // sometimes multiple spoken items map to the same category and category needs to be a single word
 var catAliases = require('./spokenToCategoryAliases.json');
@@ -77,17 +77,10 @@ var buildCache = () => {
   defaultCatsForCaching.forEach(c=>{
     p = p.then(_searchAndAggregateFn(c));
   });
-    // .then(_searchAndAggregateFn('korean'))
   p.catch(e=>{
       console.log(e);
     });
 };
-
-violet.respondTo(['display cache'],
-  (response) => {
-    console.log(JSON.stringify(cache, null, 2));
-    response.say('done');
-});
 
 
 var queryCat = (category) => {
@@ -119,6 +112,25 @@ var saySummary = (response, category) => {
     }
   });
 }
+
+violet.respondTo(['display cache'],
+  (response) => {
+    console.log(JSON.stringify(cache, null, 2));
+    response.say('done');
+});
+
+violet.respondTo(["clear cache"],
+  (response) => {
+    var keyNum = o => {return Object.keys(o).length;}
+    response.say(`Cache used to have ${keyNum(cache.search)} search queries and ${keyNum(cache.topCats)} category metadata`);
+    Object.keys(cache.search).forEach(t=>{
+      if (t === 'restaurants') return;
+      delete cache.search[t];
+      delete cache.topCats[t];
+    });
+    response.say(`Cache updated to have ${keyNum(cache.search)} search queries and ${keyNum(cache.topCats)} category metadata`);
+    // response.say(`cache.topCats[category] Cleared cache.`);
+});
 
 violet.respondTo(['what is your top {recommended|} restaurant'],
   (response) => {
