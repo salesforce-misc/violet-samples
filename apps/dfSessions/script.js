@@ -59,6 +59,7 @@ violet.addInputTypes({
 // cat = industry, session_theme, role, products
 var querySessions = (response, cat, val) => {
   // return response.load({ // <-- bug when loading multiple scripts - plugins do not load
+  val = val.replace(/ and /g, ' & ');
   return violetStorePG.store.load({
     objName: 'sessions',
     filter: `${cat} ilike '%${val}%' AND session_start_time BETWEEN '2017-11-08 08:00:00'::timestamp AND '2017-11-08 22:00:00'::timestamp`,
