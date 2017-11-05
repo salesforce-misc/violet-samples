@@ -24,7 +24,7 @@ violet.addInputTypes({
   'itemName': {
       type: 'AMAZON.LITERAL',
       // Amazon recommends/asks "to provide several hundred samples or more to address all the variations in slot value words as noted above"
-      sampleValues: utils.loadArrayFromFile('sampleTasks.txt')
+      sampleValues: utils.loadArrayFromFile(__dirname, 'sampleTasks.txt')
   }
 });
 
