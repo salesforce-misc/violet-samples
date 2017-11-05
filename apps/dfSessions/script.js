@@ -4,6 +4,7 @@
 'use strict';
 
 var violet = require('violet-conversations/lib/violet').script();
+var violetClientTx = require('violet-conversations/lib/violetClientTx')(violet);
 var violetTime = require('violet-conversations/lib/violetTime')(violet);
 var violetStorePG = require('violet-conversations/lib/violetStorePG.js')(violet);
 

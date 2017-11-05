@@ -14,6 +14,7 @@ violetSrvr = require('violet-conversations/lib/violetClientTx')(violetSrvr, srvr
 // violetSrvr.loadScript('../scripts/sf-cases-employee.js', 'einstein');
 // violetSrvr.loadScript('../scripts/sf-knowledge-base.js', 'einstein');
 // violetSrvr.loadScript('../scripts/sf-VF-VTO.js', 'einstein');
+// violetSrvr.loadScript('apps/restaurants/script.js,apps/dfSessions/script.js', 'einstein');
 violetSrvr.loadScript(process.env.SCRIPT_NAME || 'scripts/sf-leadsAndOpportunities.js', 'einstein');
 
 

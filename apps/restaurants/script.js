@@ -7,6 +7,7 @@ var Promise = require('bluebird');
 
 var utils = require('violet-conversations/lib/utils');
 var violet = require('violet-conversations/lib/violet').script();
+var violetClientTx = require('violet-conversations/lib/violetClientTx')(violet);
 var violetTime = require('violet-conversations/lib/violetTime')(violet);
 
 var yelpSvc = require('./yelp.js');
