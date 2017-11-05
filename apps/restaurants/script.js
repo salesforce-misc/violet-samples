@@ -123,9 +123,14 @@ var sayTop = (response, category) => {
   return queryCat(category).then(({results, facets})=>{
     // console.log('sayTop rcvd');
     if (results) {
+      console.log('Top Item:', results[0]);
       response.say(['My favorite restaurant is', 'I am a fan of', 'We are fans here of']);
       response.say(results[0].name, /*quick*/true);
-      response.say(`It is ${distInTime(results[0].coordinates)} walk at ${results[0].location.address1}`)
+      response.say(`It is a ${distInTime(results[0].coordinates)} walk at ${results[0].location.address1},`)
+      var catStr = utils.getArrAsStr(results[0].categories.map(p=>{return p.title}));
+      response.say(`and has ${catStr} there`, /*quick*/true)
+    } else {
+      response.say('Sorry. I could not find any ${category} restaurants');
     }
   });
 }
