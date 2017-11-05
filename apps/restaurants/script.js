@@ -139,8 +139,10 @@ var saySummary = (response, category) => {
   return queryCat(category).then(({results, facets})=>{
     // console.log('saySummary rcvd: ', facets);
     if (facets) {
-      facets = facets.filter(c=>{return c.alias !== category;})
-      response.say(`They are mostly ${facets[0].name}, ${facets[1].name}, and ${facets[2].name}`)
+      facets = facets.filter(c=>{return c.alias !== category;});
+      response.say(`The best are ${facets[0].name}, ${facets[1].name}, and ${facets[2].name}`, /*quick*/true);
+    } else {
+      response.say('Sorry. I could not find any ${category} restaurants');
     }
   });
 }
@@ -195,9 +197,9 @@ violet.respondTo([
   ],
   (response) => {
     response.say([
-      'We have a number of restaurant that I like here.',
-      'There are a number of great restaurant here.',
-      'There are a number of popular restaurant here.',
+      'We have a number of restaurant types that I like here.',
+      'There are a number of great types of restaurants here.',
+      'There are a number of popular restaurant types here.',
     ]);
     return saySummary(response, 'restaurants');
     // response.addGoal('categoryOrTop');
@@ -209,9 +211,9 @@ violet.respondTo([
   ],
   (response) => {
     response.say([
-      'We have a number of restaurant that I like here.',
-      'There are a number of great restaurant here.',
-      'There are a number of popular restaurant here.',
+      'We have a number of restaurant types that I like here.',
+      'There are a number of great types of restaurants here.',
+      'There are a number of popular restaurant types here.',
     ]);
     var category = response.get('category')
     return saySummary(response, category);
