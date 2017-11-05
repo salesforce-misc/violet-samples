@@ -184,7 +184,8 @@ violet.respondTo([
 
 violet.respondTo([
     'what is your favorite {recommended|} [[category]] restaurant',
-    'what [[category]] restaurant is your favorite {recommended|}'
+    'what [[category]] restaurant is your favorite {recommended|}',
+    'what [[category]] restaurant would you recommend'
   ],
   (response) => {
     var category = response.get('category')
@@ -206,16 +207,16 @@ violet.respondTo([
 });
 
 violet.respondTo([
-    'what [[category]] restaurants would you recommend',
-    'I need a few recommendations for [[category]] restaurants'
+    'what types of [[category]] restaurants would you recommend',
+    // 'I need a few recommendations for [[category]] restaurants'
   ],
   (response) => {
-    response.say([
-      'We have a number of restaurant types that I like here.',
-      'There are a number of great types of restaurants here.',
-      'There are a number of popular restaurant types here.',
-    ]);
     var category = response.get('category')
+    response.say([
+      `We have a number of ${category} restaurant types that I like here.`,
+      `There are a number of great types of ${category} restaurants here.`,
+      `There are a number of popular ${category} restaurant types here.`,
+    ]);
     return saySummary(response, category);
     // response.addGoal('categoryOrTop');
 });
