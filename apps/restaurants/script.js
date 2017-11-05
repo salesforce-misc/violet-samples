@@ -20,11 +20,12 @@ defaultCatsForCaching = []; // disable caching during development
 var catAliases = require('./spokenToCategoryAliases.json');
 
 
+var potCategories = utils.loadArrayFromFile('potentialCategories.txt');
 
 violet.addInputTypes({
   category: {
     type: 'categoryType',
-    values: utils.loadArrayFromFile('potentialCategories.txt')
+    values: potCategories
   }
 });
 
