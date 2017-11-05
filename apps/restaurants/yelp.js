@@ -25,6 +25,7 @@ var searchScanner = module.exports.searchScanner = (searchTerm, categories, proc
   var params = {
     latitude: lat,
     longitude: lon,
+    radius: 1000, // 1000 meters (want items within 15 minutes walk)
     limit: 50
   }
   if (offset>0) params.offset = offset;
