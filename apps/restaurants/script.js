@@ -92,12 +92,41 @@ var queryCat = (category) => {
     return Promise.resolve({results: cache.search[category], facets: cache.topCats[category]});
   });
 }
+// based on http://www.geodatasource.com/developers/javascript
+// unit: default = miles
+var distance = (lat1, lon1, lat2, lon2, unit) => {
+  console.log({lat1, lon1, lat2, lon2, unit});
+	var radlat1 = Math.PI * lat1/180
+	var radlat2 = Math.PI * lat2/180
+	var theta = lon1-lon2
+	var radtheta = Math.PI * theta/180
+	var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+	dist = Math.acos(dist)
+	dist = dist * 180/Math.PI
+	dist = dist * 60 * 1.1515
+	if (unit=="K") { dist = dist * 1.609344 } // kilometers
+	if (unit=="N") { dist = dist * 0.8684 }   // nautical miles
+  if (unit=="T") { dist = dist * 20 }       // minutes
+	return dist
+}
+var distInTime = (tgtCoord) => {
+  console.log(tgtCoord);
+  var dist = distance(lat, lon, tgtCoord.latitude, tgtCoord.longitude, 'T');
+  console.log('dist: ', dist);
+  if (dist<5) dist = 5;
+  return `${Math.round(dist)} minutes`;
+};
+
 var sayTop = (response, category) => {
   if (catAliases[category]) category = catAliases[category];
   // console.log('sayTop request: ' + category);
   return queryCat(category).then(({results, facets})=>{
     // console.log('sayTop rcvd');
-    if (results) response.say(`My favorite restaurant is ${results[0].name}`)
+    if (results) {
+      response.say(['My favorite restaurant is', 'I am a fan of', 'We are fans here of']);
+      response.say(results[0].name, /*quick*/true);
+      response.say(`It is ${distInTime(results[0].coordinates)} walk at ${results[0].location.address1}`)
+    }
   });
 }
 var saySummary = (response, category) => {
@@ -130,18 +159,35 @@ violet.respondTo(['clear cache'],
     // response.say(`cache.topCats[category] Cleared cache.`);
 });
 
-violet.respondTo(['what is your top {recommended|} restaurant'],
+////////////////////
+// the actual script
+////////////////////
+
+violet.addPhraseEquivalents([
+  ['favorite', 'top', 'most', 'best'],
+]);
+
+violet.respondTo([
+    'what is your favorite {recommended|} restaurant',
+    'what restaurant is your favorite {recommended|}'
+  ],
   (response) => {
     return sayTop(response, 'restaurants');
 });
 
-violet.respondTo(['what is your top {recommended|} [[category]] restaurant'],
+violet.respondTo([
+    'what is your favorite {recommended|} [[category]] restaurant',
+    'what [[category]] restaurant is your favorite {recommended|}'
+  ],
   (response) => {
     var category = response.get('category')
     return sayTop(response, category);
 });
 
-violet.respondTo(['what restaurants would you recommend'],
+violet.respondTo([
+    'what {types of|} restaurants would you recommend',
+    'I need a few recommendations for restaurants'
+  ],
   (response) => {
     response.say([
       'We have a number of restaurant that I like here.',
@@ -152,7 +198,10 @@ violet.respondTo(['what restaurants would you recommend'],
     // response.addGoal('categoryOrTop');
 });
 
-violet.respondTo(['what [[category]] restaurants would you recommend'],
+violet.respondTo([
+    'what [[category]] restaurants would you recommend',
+    'I need a few recommendations for [[category]] restaurants'
+  ],
   (response) => {
     response.say([
       'We have a number of restaurant that I like here.',
