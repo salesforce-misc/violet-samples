@@ -24,6 +24,14 @@
     "V_SFDC_CLIENT_SECRET" : {
       "description": "Needed when using: Violet Salesforce Plugin - Org Client Secret",
       "required": false
+    },
+    "QUIP_TOKEN" : {
+      "description": "Needed when using the Quip API",
+      "required": false
+    },
+    "QUIP_TGT_DOC_ID" : {
+      "description": "Needed by the Quip Sample App",
+      "required": false
     }
   }
 }
