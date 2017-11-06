@@ -1,7 +1,7 @@
 'use strict';
 
-var violet = require('../lib/violet.js').script();
-var violetClientTx = require('../lib/violetClientTx.js')(violet);
+var violet = require('violet-conversations/lib/violet.js').script();
+var violetClientTx = require('violet-conversations/lib/violetClientTx.js')(violet);
 
 var aboutSelf = `
   Hi, I'm Einstein, a Salesforce smart, voice-enabled assistant. I'm not
@@ -27,7 +27,7 @@ violet.respondTo({
 violet.respondTo({
   name: 'Intro',
   expecting: [
-    "Introduce yourself"
+    "Introduce yourself",
     "Who are you"
     ],
   resolve: (response) => {
