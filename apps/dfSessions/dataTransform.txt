@@ -4,4 +4,4 @@
    - :%s/^.*"","","","","",.*"\n//
    - "","([0-9]*)","Table Talk --> "60","$1","Table Talk
 4. psql
-5. Import Data: \copy sessions(level, industry, session_theme, role, products, room, venue_name, session_date, session_time, session_start_time, attendance_category, session_duration, enrollment_count, session_format, session_name, session_abstract) FROM '/Users/vineet.sinha/workspace/sf/violet/violet-samples/apps/dfSessions/dataExport.csv' CSV HEADER DELIMITER ',' ENCODING 'UTF8' QUOTE '\"'
+5. Import Data: \copy sessions(level, industry, session_theme, role, products, room, venue_name, session_date, session_time, session_start_time, attendance_category, session_duration, enrollment_count, session_format, session_name, session_abstract) FROM '/Users/vineet.sinha/workspace/sf/violet/violet-samples/apps/dfSessions/dataExport.csv' CSV HEADER DELIMITER ',' ENCODING 'UTF8'
