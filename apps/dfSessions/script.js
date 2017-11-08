@@ -63,7 +63,7 @@ var querySessions = (response, cat, val) => {
   val = val.replace(/ and /g, ' & ');
   return violetStorePG.store.load({
     objName: 'sessions',
-    filter: `${cat} ilike '%${val}%' AND session_start_time BETWEEN '2017-11-08 08:00:00'::timestamp AND '2017-11-08 22:00:00'::timestamp`,
+    filter: `${cat} ilike '%${val}%' AND session_start_time BETWEEN now()::timestamp AND '2017-11-08 22:00:00'::timestamp`,
     queryXtra: 'order by session_start_time limit 3'
   });
 };
@@ -84,6 +84,7 @@ var returnSessionInfo = (response, questionType, prettyCat, cat, val) => {
         var starts   = `starts at ${startTime.toLocaleTimeString()}`;
         var location = `is in the ${rec[0].room.trim()} at ${rec[0].venue_name.trim()}`;
         var name     = `is the ${rec[0].session_name.trim()}`;
+        name = name.replace(/\([0-9]\)/g,'') // repeat sessions have a (0-9) in their name
         switch (questionType) {
           case 'when':
             response.say(`The next ${val} session ${starts}. It ${name} and it ${location}.`)
