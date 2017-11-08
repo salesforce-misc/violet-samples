@@ -133,7 +133,10 @@ var markItemChecked = (docId, itemId, itemHtml) => {
 };
 var flagItemsAsDone = (items) => {
   // waiting on Quip team to implement this correctly
-  items.children = items.children.filter(i=>{return (i.html.startsWith('<del>'));});
+  items.children = items.children.map(i=>{
+    if (i.html.startsWith('<del>')) i.done = true;
+    return i;
+  });
   return items;
 };
 
