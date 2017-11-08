@@ -116,6 +116,7 @@ violet.respondTo(['add [[itemName]] to the list'],
 violet.respondTo(['whats next to be done', 'whats next on my to do'],
   (response) => {
     return quipSvc.getItemsP(tgtDocId, /*asList*/true).then((items)=>{
+      items = flagItemsAsDone(items);
       var nxtItem = items.children.find(i=>{return (i.done==false);});
       if (!nxtItem) {
         response.say(`There are no items that need to be done on your list`);
@@ -130,6 +131,12 @@ var markItemChecked = (docId, itemId, itemHtml) => {
   // waiting on Quip team to implement this correctly
   return quipSvc.modifyListItem(docId, itemId, [`<del>${itemHtml}</del>`]);
 };
+var flagItemsAsDone = (items) => {
+  // waiting on Quip team to implement this correctly
+  items.children = items.children.filter(i=>{return (i.html.startsWith('<del>'));});
+  return items;
+};
+
 
 // define the item list interactions
 violet.defineGoal({
@@ -157,6 +164,7 @@ violet.defineGoal({
 violet.respondTo(['what all needs to be done', 'what all is open on my to do'],
   (response) => {
     return quipSvc.getItemsP(tgtDocId, /*asList*/true).then((items)=>{
+      items = flagItemsAsDone(items);
       items = items.children.filter(i=>{return (i.done==false);});
       response.set('Items', items);
       itemList.respondWithItems(response, items);
@@ -166,6 +174,7 @@ violet.respondTo(['what all needs to be done', 'what all is open on my to do'],
 violet.respondTo(['whats all is on my to do'],
   (response) => {
     return quipSvc.getItemsP(tgtDocId, /*asList*/true).then((items)=>{
+      items = flagItemsAsDone(items);
       items = items.children;
       response.set('Items', items);
       itemList.respondWithItems(response, items);
