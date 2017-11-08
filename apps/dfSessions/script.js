@@ -63,7 +63,8 @@ var querySessions = (response, cat, val) => {
   val = val.replace(/ and /g, ' & ');
   return violetStorePG.store.load({
     objName: 'sessions',
-    filter: `${cat} ilike '%${val}%' AND session_start_time BETWEEN now()::timestamp AND '2017-11-08 22:00:00'::timestamp`,
+    //filter: `${cat} ilike '%${val}%' AND session_start_time BETWEEN now()::timestamp AND '2017-11-08 22:00:00'::timestamp`,
+    filter: `${cat} ilike '%${val}%' AND session_start_time > now()`,
     queryXtra: 'order by session_start_time limit 3'
   });
 };
