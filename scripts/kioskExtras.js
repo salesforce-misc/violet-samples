@@ -58,6 +58,20 @@ violet.respondTo({
 }});
 
 violet.respondTo({
+  name: 'Howdy',
+  expecting: [
+    "Howdy"
+    ],
+  resolve: (response) => {
+    response.say([
+      'How is your Dreamforce going?',
+      'Welcome to executive immersion',
+      'I will connect you to your customer in a whole new way',
+      'How are you trailblazing?'
+    ]);
+}});
+
+violet.respondTo({
   name: 'HowWork',
   expecting: [
     "How do you work"
