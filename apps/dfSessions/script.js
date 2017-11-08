@@ -76,7 +76,7 @@ var returnSessionInfo = (response, questionType, prettyCat, cat, val) => {
       if (!rec) return response.say('Unexpected error');
       console.log(`Found ${rec.length} sessions.`)
       if (rec.length == 0) {
-        return repsonse.say('Sorry, I could not find any any sessions. Perhaps try asking a Trail Guide');
+        return response.say('Sorry, I could not find any any sessions. Perhaps try asking a Trail Guide');
       }
       if (rec.length > 0) {
         console.log(rec[0]);
