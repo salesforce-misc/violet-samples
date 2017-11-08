@@ -87,3 +87,5 @@ violet.respondTo({
       Engine helps in the processing.
     `);
 }});
+
+module.exports = violet;
