@@ -62,7 +62,7 @@ violet.respondTo('How old am I?',
 
 violet.respondTo('I recieved a bill from [[company]] today for [[amount]]',
   (response) => {
-    response.store('bills',
+    response.store('bills', {
         'user': response.get('userId'),
         'from': response.get('company'),
         'amount': response.get('amount')
@@ -75,21 +75,21 @@ violet.respondTo('I recieved a bill from [[company]] today for [[amount]]',
 // (b) you need to make you resolve method a generator and place a yield before
 // the call to the load method
 // example a:
-violet.respondTo(
+violet.respondTo({
   expecting: 'Who did I receive my bill from most recently?',
   resolve: (response) => {
     return response.load('bills', 'bills.user', response.get('userId') )
       .then((bills)=>{
         response.say(`You received a bill from ${bills[0].from} for ${bills[0].amount}`);
       });
-});
+}});
 // example b: (note the 'function *' and the 'yield' below)
-violet.respondTo(
+violet.respondTo({
   expecting: 'Who did I receive my bill from most recently?',
   resolve: function *(response) {
     var bills = yield response.load('bills', 'bills.user', response.get('userId') )
     response.say(`You received a bill from ${bills[0].from} for ${bills[0].amount}`);
-});
+}});
 
 
 ////////////////

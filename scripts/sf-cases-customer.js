@@ -54,13 +54,13 @@ violet.respondTo({
 violet.respondTo({
   expecting: ['which case of mine changed states most recently'],
   resolve: function *(response) {
-    var results = yield response.load('Case*', 'Contact*.Name*', 'Stella Pavlova', null, 'order by LastModifiedDate limit 1')
+    var results = yield response.load('Case*', 'Contact*.Name*', 'Stella Pavlova', null, 'order by LastModifiedDate limit 1');
     if (results.length == 0) {
       response.say('Sorry. You have no cases.');
       return;
     }
-    var case = results[0];
-    response.say('Your case ' + case.Subject + ' has status ' + case.Status + ' and priority ' + case.Priority);
+    var caseObj = results[0];
+    response.say('Your case ' + caseObj.Subject + ' has status ' + caseObj.Status + ' and priority ' + caseObj.Priority);
 }});
 
 violet.respondTo({
@@ -71,8 +71,7 @@ violet.respondTo({
     // TODO: test and implement below
     //violet.sendAlertMessage('One of your cases has changed state');
     //... in violet implennt as `_setAlert('message')` and have callback to clear
-
-}
+}});
 
 
 module.exports = violet;

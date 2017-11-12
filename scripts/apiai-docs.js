@@ -40,7 +40,7 @@ violet.defineGoal({
       response.set('numNights', numNights);
       response.set('dailyRate', dailyRate);
       response.addGoal('confirmBooking');
-      response.ask('Book hotel room at ' + destination + ' checking in on ' + checkinDate + ' for ' + numNights ' at ' + dailyRate + ' dollars per night');
+      response.ask('Book hotel room at ' + destination + ' checking in on ' + checkinDate + ' for ' + numNights + ' at ' + dailyRate + ' dollars per night');
       // response.say('Reserved hotel room');
     });
     return true;
