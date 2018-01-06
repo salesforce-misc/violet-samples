@@ -1,10 +1,10 @@
 'use strict';
 
-var violetSrvr = require('violet-conversations/lib/violetSrvr')('/alexa');
+var violetSrvr = require('violet/lib/violetSrvr')('/alexa');
 violetSrvr.listAppsAt('/');
 var srvrInstance = violetSrvr.createAndListen(process.env.PORT || 8080);
 
-violetSrvr = require('violet-conversations/lib/violetClientTx')(violetSrvr, srvrInstance);
+violetSrvr = require('violet/lib/violetClientTx')(violetSrvr, srvrInstance);
 
 // violetSrvr.loadScript('tutorials/introduction.js', 'einstein');
 // violetSrvr.loadScript('scripts/diabetes-stoplight.js', 'hls');

@@ -2,10 +2,10 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 
-var violet = require('violet-conversations/lib/violet').script();
-var violetTime = require('violet-conversations/lib/violetTime')(violet);
+var violet = require('violet/lib/violet').script();
+var violetTime = require('violet/lib/violetTime')(violet);
 
-var violetStorePG = require('violet-conversations/lib/violetStorePG.js')(violet);
+var violetStorePG = require('violet/lib/violetStorePG.js')(violet);
 
 
 // mock objects

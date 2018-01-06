@@ -3,12 +3,12 @@
 
 'use strict';
 
-var violet = require('violet-conversations/lib/violet').script();
-var violetClientTx = require('violet-conversations/lib/violetClientTx')(violet);
-var violetTime = require('violet-conversations/lib/violetTime')(violet);
-var violetKnowledgeResultsList = require('violet-conversations/lib/violetList')(violet, 'KnowledgeResults', 'article', 'articles', 'Title');
+var violet = require('violet/lib/violet').script();
+var violetClientTx = require('violet/lib/violetClientTx')(violet);
+var violetTime = require('violet/lib/violetTime')(violet);
+var violetKnowledgeResultsList = require('violet/lib/violetList')(violet, 'KnowledgeResults', 'article', 'articles', 'Title');
 
-var violetSFStore = require('violet-conversations/lib/violetStoreSF')(violet);
+var violetSFStore = require('violet/lib/violetStoreSF')(violet);
 violetSFStore.store.propOfInterest = {
   'KnowledgeArticleVersion*': ['Id*', 'Title*', 'Summary*', 'UrlName*', 'LastPublishedDate*']
 }

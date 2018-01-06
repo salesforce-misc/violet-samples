@@ -3,7 +3,7 @@
 
 'use strict';
 
-var violet = require('violet-conversations/lib/violet').script();
+var violet = require('violet/lib/violet').script();
 
 // Implementing https://docs.api.ai/docs/dialogs
 

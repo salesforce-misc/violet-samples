@@ -4,10 +4,10 @@
 'use strict';
 
 var utils = require('violet-conversations/lib/utils');
-var violet = require('violet-conversations/lib/violet').script();
-var violetTime = require('violet-conversations/lib/violetTime')(violet);
-var itemList = require('violet-conversations/lib/violetList')(violet, 'Items', 'item', 'items', 'text');
-var categoryList = require('violet-conversations/lib/violetList')(violet, 'Categories', 'category', 'categories', 'text');
+var violet = require('violet/lib/violet').script();
+var violetTime = require('violet/lib/violetTime')(violet);
+var itemList = require('violet/lib/violetList')(violet, 'Items', 'item', 'items', 'text');
+var categoryList = require('violet/lib/violetList')(violet, 'Categories', 'category', 'categories', 'text');
 
 var quipSvc = require('./svc.js');
 var Promise = require('bluebird');

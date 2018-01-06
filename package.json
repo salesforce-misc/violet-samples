@@ -2,7 +2,7 @@
   "name": "violet-samples",
   "description": "Samples for violet-conversations",
   "license": "BSD-3-Clause",
-  "version": "0.7.0",
+  "version": "0.7.2",
   "main": "server.js",
   "keywords": [
     "voice",
@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/salesforce/violet-samples#readme",
   "dependencies": {
-    "violet-conversations": "^0.7.0",
+    "violet": "^0.7.2",
     "request": "^2.81.0",
     "request-promise": "^4.2.1",
     "soundex": "^0.2.1",

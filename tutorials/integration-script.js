@@ -3,8 +3,8 @@
 
 'use strict';
 
-var violet = require('violet-conversations/lib/violet').script();
-var violetClientTx = require('violet-conversations/lib/violetClientTx')(violet);
+var violet = require('violet/lib/violet').script();
+var violetClientTx = require('violet/lib/violetClientTx')(violet);
 
 violet.respondTo([
       "Hello"

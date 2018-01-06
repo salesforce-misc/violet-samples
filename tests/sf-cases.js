@@ -2,10 +2,10 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 
-var violet = require('violet-conversations/lib/violet').script();
-var violetTime = require('violet-conversations/lib/violetTime')(violet);
+var violet = require('violet/lib/violet').script();
+var violetTime = require('violet/lib/violetTime')(violet);
 
-var violetSFStore = require('violet-conversations/lib/violetSFStore');
+var violetSFStore = require('violet/lib/violetSFStore');
 
 violet.setPersistentStore(violetSFStore.store);
 
