@@ -107,7 +107,7 @@ violet.addInputTypes({
   'flightDay': 'LITERAL',
 });
 
-violet.respondTo('What time does the [[airline]] flight arrive', 'from [[city]]',
+violet.respondTo('What time does the [[airline]] flight arrive',
   (response) => {
     response.addGoal('flightArrivalTime');
 });
