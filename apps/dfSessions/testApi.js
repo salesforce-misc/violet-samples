@@ -9,7 +9,7 @@ var violetStorePG = require('violet/lib/violetStorePG.js')(violet);
 
 
 // mock objects
-var response = violet._getResponseForDebugging({
+var response = new Response(violet, {
   getSession: ()=>{}
 }, {});
 
