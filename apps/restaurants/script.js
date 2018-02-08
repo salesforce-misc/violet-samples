@@ -6,7 +6,7 @@
 var Promise = require('bluebird');
 
 var utils = require('violet/lib/utils');
-var violet = require('violet/lib/violet').script();
+var violet = require('violet').script();
 var violetClientTx = require('violet/lib/violetClientTx')(violet);
 var violetTime = require('violet/lib/violetTime')(violet);
 

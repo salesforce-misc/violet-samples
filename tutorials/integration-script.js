@@ -3,7 +3,7 @@
 
 'use strict';
 
-var violet = require('violet/lib/violet').script();
+var violet = require('violet').script();
 var violetClientTx = require('violet/lib/violetClientTx')(violet);
 
 violet.respondTo([

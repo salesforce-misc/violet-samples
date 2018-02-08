@@ -4,7 +4,7 @@
 'use strict';
 
 var utils = require('violet/lib/utils');
-var violet = require('violet/lib/violet').script();
+var violet = require('violet').script();
 var violetTime = require('violet/lib/violetTime')(violet);
 var itemList = require('violet/lib/violetList')(violet, 'Items', 'item', 'items', 'text');
 var categoryList = require('violet/lib/violetList')(violet, 'Categories', 'category', 'categories', 'text');

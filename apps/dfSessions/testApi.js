@@ -2,7 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 
-var violet = require('violet/lib/violet').script();
+var violet = require('violet').script();
 var violetTime = require('violet/lib/violetTime')(violet);
 
 var violetStorePG = require('violet/lib/violetStorePG.js')(violet);
