@@ -4,8 +4,7 @@
 
 var yelp = require('yelp-fusion');
 
-var clientId = process.env.YELP_CLIENT_ID;
-var clientSecret = process.env.YELP_CLIENT_SECRET;
+var apiKey = process.env.YELP_API_KEY;
 
 var lat = null;
 var lon = null;
@@ -15,10 +14,8 @@ var client = null;
 module.exports.init = (_lat, _lon) => {
   lat = _lat;
   lon = _lon;
-  return yelp.accessToken(clientId, clientSecret).then(resp => {
-    var token = resp.jsonBody.access_token;
-    client = yelp.client(token);
-  });
+  client = yelp.client(apiKey);
+  return Promise.resolve();
 }
 
 var searchScanner = module.exports.searchScanner = (searchTerm, categories, processBusinessesCB, offset=0, max=100) => {
