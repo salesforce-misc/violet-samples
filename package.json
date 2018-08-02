@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/salesforce/violet-samples#readme",
   "dependencies": {
-    "violet": "^0.9.0",
+    "violet": "^0.12.3",
     "request": "^2.81.0",
     "request-promise": "^4.2.1",
     "soundex": "^0.2.1",
