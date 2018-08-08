@@ -3,6 +3,8 @@
 
 'use strict';
 
+// Inspired by: http://blog.jeffdouglas.com/2015/08/12/alexa-for-salesforce-with-amazon-echo/
+
 var moment = require('moment-timezone');
 var pluralize = require('pluralize');
 
