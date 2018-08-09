@@ -1,5 +1,5 @@
 /*
- * Calculator Test Script - targeting testing of Platforms
+ * Finance Calculator - demonstrating the Conversation Flow Language
  */
 
 var violet = require('./lib/violet').script();
