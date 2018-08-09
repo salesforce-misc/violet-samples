@@ -7,6 +7,8 @@ project is configured to create a skill at the `alexa/einstein` end point.
 
 | Deploy | Script | Notes |
 |---|---|---|
+|[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/salesforce/violet-samples&env[SCRIPT_NAME]=scripts/basicCalculator.js) | [scripts/basicCalculator.js](scripts/basicCalculator.js) | Basic Arithmetic Calculator |
+|[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/salesforce/violet-samples&env[SCRIPT_NAME]=scripts/financeCalculator.js) | [scripts/financeCalculator.js](scripts/financeCalculator.js) | Split bills, calculate tips, & find out how many payments will need to be made on a mortgage |
 |[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/salesforce/violet-samples&env[SCRIPT_NAME]=scripts/sf-leadsAndOpportunities.js) | [scripts/sf-leadsAndOpportunities.js](scripts/sf-leadsAndOpportunities.js) | Access your Sales Leads and Opportunities |
 |[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/salesforce/violet-samples&env[SCRIPT_NAME]=scripts/sf-cases-employee.js) | [scripts/sf-cases-employee.js](scripts/sf-cases-employee.js) | Access your Service Cases (for employees) |
 |[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/salesforce/violet-samples&env[SCRIPT_NAME]=scripts/sf-cases-customer.js) | [scripts/sf-cases-customer.js](scripts/sf-cases-customer.js) | Access your Service Cases (for customers) |
