@@ -1,8 +1,6 @@
 'use strict';
 
 var violet = require('violet/lib/violet.js').script();
-var violetClientTx = require('violet/lib/violetClientTx.js')(violet);
-var violetTime = require('violet/lib/violetTime.js')(violet);
 
 var violetSFStore = require('../lib/violetStoreSF.js')(violet);
 violetSFStore.store.propOfInterest = {

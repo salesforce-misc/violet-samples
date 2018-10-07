@@ -3,7 +3,6 @@
 
 
 var violet = require('violet').script();
-var violetTime = require('violet/lib/violetTime')(violet);
 
 var violetSFStore = require('violet/lib/violetSFStore');
 

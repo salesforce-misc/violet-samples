@@ -1,7 +1,6 @@
 'use strict';
 
 var violet = require('violet/lib/violet.js').script();
-var violetClientTx = require('violet/lib/violetClientTx.js')(violet);
 
 var aboutSelf = `
   Hi, I'm Einstein, a Salesforce smart, voice-enabled assistant. I'm not

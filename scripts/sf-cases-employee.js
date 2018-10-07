@@ -4,7 +4,6 @@
 'use strict';
 
 var violet = require('violet').script();
-var violetTime = require('violet/lib/violetTime')(violet);
 var violetCasesList = require('violet/lib/violetList')(violet, 'Cases', 'case', 'cases');
 
 var violetSFStore = require('violet/lib/violetStoreSF')(violet);

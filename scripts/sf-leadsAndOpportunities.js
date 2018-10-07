@@ -7,8 +7,6 @@ var moment = require('moment-timezone');
 var pluralize = require('pluralize');
 
 var violet = require('violet').script();
-// var violetClientTx = require('violet/lib/violetClientTx')(violet);
-var violetTime = require('violet/lib/violetTime')(violet);
 
 var violetSFStore = require('violet/lib/violetStoreSF')(violet);
 violetSFStore.store.propOfInterest = {
