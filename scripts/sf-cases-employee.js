@@ -26,11 +26,8 @@ violet.addInputTypes({
 // implement login - as a function of how we deploy
 const ownerAlias = 'VSinh';
 
-
-// almost identical to the cases-user example with the query being on an owner instead
-violet.respondTo({
-  expecting: ['status of my cases'],
-  resolve: function *(response) {
+var appCtrl = {
+  checkMyCases: function *(response) {
     var results = yield response.load('Case*', 'Owner*.Alias*', ownerAlias);
     if (results.length == 0) {
       response.say('Sorry. You have no cases.');
@@ -57,7 +54,46 @@ violet.respondTo({
         out += ','
     });
     response.say(out);
-}});
+  },
+  checkOpenCases: function *(response) {
+    var results = yield response.load('Case*', 'Owner*.Alias*', ownerAlias, "Status <> 'Closed'");
+    response.set('Cases', results);
+    violetCasesList.respondWithItems(response, results);
+  },
+  checkCasesForStatus: function *(response) {
+    var results = yield response.load('Case*', 'Owner*.Alias*', ownerAlias, "Status = '" + response.get('caseStatus') + "'");
+    response.set('Cases', results);
+    if (results.length == 0) {
+      response.say('Sorry. You have no cases.');
+      return;
+    }
+    violetCasesList.respondWithItems(response, results);
+  },
+  checkCasesForPriority: function *(response) {
+    var results = yield response.load('Case*', 'Owner*.Alias*', ownerAlias, "Priority = '" + response.get('casePriority') + "'");
+    response.set('Cases', results);
+    if (results.length == 0) {
+      response.say('Sorry. You have no cases.');
+      return;
+    }
+    violetCasesList.respondWithItems(response, results);
+  },
+  checkCasesForStatusAndPriority: function *(response) {
+    var results = yield response.load('Case*', 'Owner*.Alias*', ownerAlias, "(Status = '" + response.get('caseStatus') + "' AND Priority = '" + resposne.get('casePriority') +  "')");
+    response.set('Cases', results);
+    if (results.length == 0) {
+      response.say('Sorry. You have no cases.');
+      return;
+    }
+    violetCasesList.respondWithItems(response, results);
+  }
+};
+
+
+violet.respondTo({
+  expecting: ['status of my cases'],
+  resolve: appCtrl.checkMyCases
+});
 
 violetCasesList.getItemText = (ndx, results) => {
   var caseObj = results[ndx];
@@ -108,48 +144,24 @@ violet.defineGoal({
 
 violet.respondTo({
   expecting: ['what are my {open|} cases'],
-  resolve: function *(response) {
-    var results = yield response.load('Case*', 'Owner*.Alias*', ownerAlias, "Status <> 'Closed'");
-    response.set('Cases', results);
-    violetCasesList.respondWithItems(response, results);
-}});
+  resolve: appCtrl.checkOpenCases
+});
 
 violet.respondTo({
   expecting: ['what are my [[caseStatus]] cases', 'what cases of mine have status {set to|} [[caseStatus]]'],
-  resolve: function *(response) {
-    var results = yield response.load('Case*', 'Owner*.Alias*', ownerAlias, "Status = '" + response.get('caseStatus') + "'");
-    response.set('Cases', results);
-    if (results.length == 0) {
-      response.say('Sorry. You have no cases.');
-      return;
-    }
-    violetCasesList.respondWithItems(response, results);
-}});
+  resolve: appCtrl.checkCasesForStatus
+});
 
 violet.respondTo({
   expecting: ['what are my [[casePriority]] priority cases', 'what cases of mine have priority {set to|} [[casePriority]]'],
-  resolve: function *(response) {
-    var results = yield response.load('Case*', 'Owner*.Alias*', ownerAlias, "Priority = '" + response.get('casePriority') + "'");
-    response.set('Cases', results);
-    if (results.length == 0) {
-      response.say('Sorry. You have no cases.');
-      return;
-    }
-    violetCasesList.respondWithItems(response, results);
-}});
+  resolve: appCtrl.checkCasesForPriority
+});
 
 violet.respondTo({
   expecting: ['what cases of mine have status {set to|} [[caseStatus]] and priority {set to|} [[casePriority]]',
               'what cases of mine have priority {set to|} [[casePriority]] and status {set to|} [[caseStatus]]'],
-  resolve: function *(response) {
-    var results = yield response.load('Case*', 'Owner*.Alias*', ownerAlias, "(Status = '" + response.get('caseStatus') + "' AND Priority = '" + resposne.get('casePriority') +  "')");
-    response.set('Cases', results);
-    if (results.length == 0) {
-      response.say('Sorry. You have no cases.');
-      return;
-    }
-    violetCasesList.respondWithItems(response, results);
-}});
+  resolve: appCtrl.checkCasesForStatusAndPriority
+});
 
 
 module.exports = violet;
