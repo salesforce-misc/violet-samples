@@ -72,11 +72,13 @@ violet.defineGoal({
     expecting: ['{hear|} priority for case [[caseNo]]'],
     resolve: (response) => {
       var caseObj = violetCasesList.getItemFromResults(response, response.get('caseNo'));
+      if (!caseObj) return;
       response.say('Case ' + caseObj.Subject + ' has priority ' + caseObj.Priority);
   }}, {
     expecting: ['Set priority for case [[caseNo]] to [[casePriority]]'],
     resolve: function *(response) {
       var caseObj = violetCasesList.getItemFromResults(response, response.get('caseNo'));
+      if (!caseObj) return;
       yield response.update('Case*', 'CaseNumber*', caseObj.CaseNumber, {
           'Priority*': response.get('casePriority')
       });
@@ -85,6 +87,7 @@ violet.defineGoal({
     expecting: ['Change status for case [[caseNo]] to [[caseStatus]]'],
     resolve: function *(response) {
       var caseObj = violetCasesList.getItemFromResults(response, response.get('caseNo'));
+      if (!caseObj) return;
       yield response.update('Case*', 'CaseNumber*', caseObj.CaseNumber, {
           Status: response.get('caseStatus')
       });
@@ -93,6 +96,7 @@ violet.defineGoal({
     expecting: ['Add comment to case [[caseNo]] saying {{commentText]]'],
     resolve: function *(response) {
       var caseObj = violetCasesList.getItemFromResults(response, response.get('caseNo'));
+      if (!caseObj) return;
       yield response.store('CaseComment*', {
         'CommentBody*': 'Text String',
         'ParentId*': caseObj.Id
@@ -106,7 +110,7 @@ violet.respondTo({
   expecting: ['what are my {open|} cases'],
   resolve: function *(response) {
     var results = yield response.load('Case*', 'Owner*.Alias*', ownerAlias, "Status <> 'Closed'");
-    response.set('CaseResults', results);
+    response.set('Cases', results);
     violetCasesList.respondWithItems(response, results);
 }});
 
@@ -114,7 +118,7 @@ violet.respondTo({
   expecting: ['what are my [[caseStatus]] cases', 'what cases of mine have status {set to|} [[caseStatus]]'],
   resolve: function *(response) {
     var results = yield response.load('Case*', 'Owner*.Alias*', ownerAlias, "Status = '" + response.get('caseStatus') + "'");
-    response.set('CaseResults', results);
+    response.set('Cases', results);
     if (results.length == 0) {
       response.say('Sorry. You have no cases.');
       return;
@@ -126,7 +130,7 @@ violet.respondTo({
   expecting: ['what are my [[casePriority]] priority cases', 'what cases of mine have priority {set to|} [[casePriority]]'],
   resolve: function *(response) {
     var results = yield response.load('Case*', 'Owner*.Alias*', ownerAlias, "Priority = '" + response.get('casePriority') + "'");
-    response.set('CaseResults', results);
+    response.set('Cases', results);
     if (results.length == 0) {
       response.say('Sorry. You have no cases.');
       return;
@@ -139,7 +143,7 @@ violet.respondTo({
               'what cases of mine have priority {set to|} [[casePriority]] and status {set to|} [[caseStatus]]'],
   resolve: function *(response) {
     var results = yield response.load('Case*', 'Owner*.Alias*', ownerAlias, "(Status = '" + response.get('caseStatus') + "' AND Priority = '" + resposne.get('casePriority') +  "')");
-    response.set('CaseResults', results);
+    response.set('Cases', results);
     if (results.length == 0) {
       response.say('Sorry. You have no cases.');
       return;
