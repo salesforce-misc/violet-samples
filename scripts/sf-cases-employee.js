@@ -23,6 +23,29 @@ violet.addInputTypes({
   },
 });
 
+var getStatusCounts = function(results) {
+  // iterate through results and collect states in object 'status'
+  var status = {};
+  results.forEach((c)=>{
+    if (!status[c.Status]) status[c.Status] = 0;
+    status[c.Status]++;
+  });
+
+  var out = 'You have ' + results.length + ' cases. Of these'
+  var states = Object.keys(status);
+  states.forEach((s,ndx)=>{
+    if (status[s]==1)
+      out += ' ' + status[s] + ' is ' + s;
+    else
+      out += ' ' + status[s] + ' are ' + s;
+    if (ndx == states.length-2)
+      out += ' and ';
+    else if (ndx < states.length-2)
+      out += ','
+  });
+  return out;
+}
+
 // implement login - as a function of how we deploy
 const ownerAlias = 'VSinh';
 
@@ -34,26 +57,7 @@ var appCtrl = {
       return;
     }
 
-    // iterate through results and collect states in object 'status'
-    var status = {};
-    results.forEach((c)=>{
-      if (!status[c.Status]) status[c.Status] = 0;
-      status[c.Status]++;
-    });
-
-    var out = 'You have ' + results.length + ' cases. Of these'
-    var states = Object.keys(status);
-    states.forEach((s,ndx)=>{
-      if (status[s]==1)
-        out += ' ' + status[s] + ' is ' + s;
-      else
-        out += ' ' + status[s] + ' are ' + s;
-      if (ndx == states.length-2)
-        out += ' and ';
-      else if (ndx < states.length-2)
-        out += ','
-    });
-    response.say(out);
+    response.say(getStatusCounts(results));
   },
   checkOpenCases: function *(response) {
     var results = yield response.load('Case*', 'Owner*.Alias*', ownerAlias, "Status <> 'Closed'");
