@@ -2,7 +2,7 @@
  * Finance Calculator - demonstrating the Conversation Flow Language
  */
 
-var violet = require('./lib/violet').script();
+var violet = require('violet').script();
 
 violet.addInputTypes({
   "billAmt": "number",
