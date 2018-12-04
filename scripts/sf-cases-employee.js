@@ -21,6 +21,7 @@ violet.addInputTypes({
     "type": "casePriorityType",
     "values": ["Low", "Medium", "High"]
   },
+  "commentText": "phrase"
 });
 
 var getStatusCounts = function(results) {
@@ -44,7 +45,7 @@ var getStatusCounts = function(results) {
       out += ','
   });
   return out;
-}
+};
 
 // implement login - as a function of how we deploy
 const ownerAlias = 'VSinh';
@@ -92,6 +93,36 @@ var appCtrl = {
     violetCasesList.respondWithItems(response, results);
   }
 };
+var mockData = [
+  {CaseNumber: 1, Status: "New", Priority: "Low", Subject: "Defective Equipment"},
+  {CaseNumber: 2, Status: "Escalated", Priority: "Low", Subject: "Wrong Size"},
+  {CaseNumber: 3, Status: "New", Priority: "Medium", Subject: "Completely Broken"},
+  {CaseNumber: 4, Status: "Escalated", Priority: "Medium", Subject: "Too Thin"},
+  {CaseNumber: 5, Status: "New", Priority: "High", Subject: "Low Quality"},
+  {CaseNumber: 6, Status: "Closed", Priority: "High", Subject: "Works Too Well"}
+];
+var appCtrlMock = {
+  checkMyCases: function *(response) {
+    response.say(getStatusCounts(mockData));
+  },
+  checkOpenCases: function *(response) {
+    response.set('Cases', mockData);
+    violetCasesList.respondWithItems(response, mockData);
+  },
+  checkCasesForStatus: function *(response) {
+    response.set('Cases', mockData);
+    violetCasesList.respondWithItems(response, mockData);
+  },
+  checkCasesForPriority: function *(response) {
+    response.set('Cases', mockData);
+    violetCasesList.respondWithItems(response, mockData);
+  },
+  checkCasesForStatusAndPriority: function *(response) {
+    response.set('Cases', mockData);
+    violetCasesList.respondWithItems(response, mockData);
+  }
+};
+//appCtrl = appCtrlMock;
 
 
 violet.respondTo({
@@ -133,7 +164,7 @@ violet.defineGoal({
       });
       response.say('Case ' + caseObj.Subject + ' has status updated to [[caseStatus]]');
   }}, {
-    expecting: ['Add comment to case [[caseNo]] saying {{commentText]]'],
+    expecting: ['Add comment to case [[caseNo]] saying [[commentText]]'],
     resolve: function *(response) {
       var caseObj = violetCasesList.getItemFromResults(response, response.get('caseNo'));
       if (!caseObj) return;
