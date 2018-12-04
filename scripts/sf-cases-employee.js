@@ -5,8 +5,7 @@
 
 var violet = require('violet').script();
 
-// var violetCasesList = require('violet/lib/violetList')(violet, 'Cases', 'case', 'cases');
-var listWidgetTemplate = require('violet/lib/violetList-cfl')(violet);
+var listWidgetTemplate = require('violet/lib/violetList')(violet);
 
 var violetSFStore = require('violet/lib/violetStoreSF')(violet);
 violetSFStore.store.propOfInterest = {

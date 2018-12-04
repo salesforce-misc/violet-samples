@@ -4,7 +4,7 @@
 'use strict';
 
 var violet = require('violet').script();
-var violetKnowledgeResultsList = require('violet/lib/violetList')(violet, 'KnowledgeResults', 'article', 'articles', 'Title');
+var violetKnowledgeResultsList = require('violet/lib/violetList-api')(violet, 'KnowledgeResults', 'article', 'articles', 'Title');
 
 var violetSFStore = require('violet/lib/violetStoreSF')(violet);
 violetSFStore.store.propOfInterest = {
