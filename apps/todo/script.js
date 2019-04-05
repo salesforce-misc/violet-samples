@@ -6,8 +6,8 @@
 var utils = require('violet/lib/utils');
 var violet = require('violet').script();
 var violetTime = require('violet/lib/violetTime')(violet);
-var itemList = require('violet/lib/violetList')(violet, 'Items', 'item', 'items', 'text');
-var categoryList = require('violet/lib/violetList')(violet, 'Categories', 'category', 'categories', 'text');
+var itemList = require('violet/lib/violetList-api')(violet, 'Items', 'item', 'items', 'text');
+var categoryList = require('violet/lib/violetList-api')(violet, 'Categories', 'category', 'categories', 'text');
 
 var quipSvc = require('./svc.js');
 var Promise = require('bluebird');
