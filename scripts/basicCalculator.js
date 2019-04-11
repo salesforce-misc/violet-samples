@@ -1,20 +1,24 @@
 /*
- * Calculator Test Script - targeting testing of Platforms
+ * Calculator Script - Basic Voice Script using all key parts of Violet
  */
 
 var violet = require('violet').script();
 
+// the voice script takes sometimes two values from the user
 violet.addInputTypes({
   "NumOne": "number",
   "NumTwo": "number",
 });
 
+// define a controller to build out user request processing
 var app = {
   add: (a, b)=>{return parseInt(a)+parseInt(b); },
   subtract: (a, b)=>{return parseInt(a)-parseInt(b); },
   multiply: (a, b)=>{return parseInt(a)*parseInt(b); },
   divide: (a, b)=>{return parseInt(a)/parseInt(b); }
 }
+
+// define the conversational flow and connect to the controller (last parameter)
 violet.addFlowScript(`
 <app>
   <choice>
