@@ -2,7 +2,7 @@
 
 `violet-samples` is a list of example voice app/bot scripts (powered-by
   [violet-conversations](https://github.com/salesforce/violet-conversations)). This
-project is configured to create a skill at the `alexa/einstein` end point.
+project is configured to create a skill at the `einstein` end point.
 
 
 | Deploy | Script | Notes |
