@@ -4,7 +4,7 @@
 'use strict';
 
 var utils = require('violet/lib/utils');
-var violet = require('violet').script();
+var violet = require('violet').script({invocationName:'quip bot'});
 var violetTime = require('violet/lib/violetTime')(violet);
 var itemList = require('violet/lib/violetList-api')(violet, 'Items', 'item', 'items', 'text');
 var categoryList = require('violet/lib/violetList-api')(violet, 'Categories', 'category', 'categories', 'text');
@@ -19,13 +19,9 @@ violet.addPhraseEquivalents([
 ]);
 
 violet.addInputTypes({
-  "itemNo": "NUMBER",
-  "categoryNo": "NUMBER",
-  'itemName': {
-      type: 'AMAZON.LITERAL',
-      // Amazon recommends/asks "to provide several hundred samples or more to address all the variations in slot value words as noted above"
-      sampleValues: utils.loadArrayFromFile(__dirname, 'sampleTasks.txt')
-  }
+  "itemNo": "number",
+  "categoryNo": "number",
+  'itemName': "phrase"
 });
 
 // // want to support this script in many forms
