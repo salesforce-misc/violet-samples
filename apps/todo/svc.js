@@ -2,12 +2,15 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 var quip = new require('./api.js');
+var quipEx = new require('./apiEx.js');
 var utils = new require('./utils.js');
 var Promise = require('bluebird');
 var cheerio = require('cheerio');
 
 
 var client = new quip.Client({accessToken: process.env.QUIP_TOKEN});
+
+module.exports.getClient = ()=>{ return client; }
 
 module.exports.getAuthenticatedUser = function(cb) {
   client.getAuthenticatedUser(cb);
@@ -43,6 +46,18 @@ var getFolder = module.exports.getFolder = (fid, ndx=0)=>{
   });
 };
 
+var appendToDoc = module.exports.appendToDoc = (tid, content, contentFormat)=>{
+  var params = {
+    threadId: tid,
+    content: content,
+    format: contentFormat,
+    operation: quip.Operation.APPEND
+  };
+  client.editDocument(params, function(err) {
+      if (err) console.log(err);
+  });
+};
+
 var appendItemsWithinSection = module.exports.appendItemsWithinSection = (tid, sid, items)=>{
   if (!sid) sid = tid; //adds to end of document
   var params = {
@@ -67,6 +82,33 @@ module.exports.appendItems = (tid, items)=>{
       sid = curItems.children[curItems.children.length-1].id;
     }
     appendItemsWithinSection(tid, sid, items);
+  });
+};
+
+module.exports.appendImage = (tid, imgName, img)=>{
+  var params = {
+    threadId: tid,
+    blob: img,
+    name: imgName
+  };
+  quipEx.putBlob(client, params, function(err, resp) {
+      // if (err) console.log(err);
+      if (err) {
+        console.log(err.info);
+        var data = err.httpResponse.req.socket;
+        const sym = Object.getOwnPropertySymbols(data).find(s => {
+          return String(s) === "Symbol(connect-options)";
+        });
+        console.log(data[sym].headers);
+        console.log('err.httpResponse.req._header: ', err.httpResponse.req._header);
+        console.log(err.httpResponse.req.res.headers);
+        const outHeadersKeySym = Object.getOwnPropertySymbols(err.httpResponse.req).find(s => {
+          return String(s) === "Symbol(outHeadersKey)";
+        });
+        console.log(err.httpResponse.req[outHeadersKeySym]);
+        return;
+      }
+      appendToDoc(tid, `<img src='${resp.url}'>`, 'html');
   });
 };
 
