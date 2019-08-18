@@ -1,0 +1,103 @@
+<app>
+
+  <scriptlet id="ack">
+    <sayOne>
+      <say>Got it.</say>
+      <say>Great.</say>
+      <say>Awesome</say>
+    </sayOne>
+  </scriptlet>
+
+  <scriptlet id="err">
+    <sayOne>
+      <say>Sorry.</say>
+      <say>Whoops.</say>
+    </sayOne>
+  </scriptlet>
+
+  <scriptlet id="retry">
+    <sayOne>
+      <say>Please try again.</say>
+      <say>Would you mind repeating.</say>
+    </sayOne>
+  </scriptlet>
+
+  <!-- // apologize
+  <jump target="#err"/>
+  <say>msg</say>
+  <jump target="#retry"/>
+  --->
+
+  <choice>
+    <expecting>add [[itemName]] to the list</expecting>
+    <check value="app.addItemToList(response)">
+      <case value="noItem">
+        <jump target="#err"/>
+        <say>I could not understand what you asked to be added.</say>
+        <jump target="#retry"/>
+      </case>
+      <case value="addedToDoc">
+        <say>Got it. I added [[itemName]] to the document. Anything else?</say>
+      </case>
+      <case value="addedToSingleList">
+        <say>Got it. I added [[itemName]] to the checklist. Anything else?</say>
+      </case>
+      <default> <!-- multiple list; value="needList" -->
+        <say>Sure.</say>
+        <categoryList/>
+      </default>
+    </check>
+  </choice>
+
+  <choice>
+    <expecting>whats next to be done</expecting>
+    <expecting>whats next on my to do</expecting>
+    <check value="app.whatsNext(response)">
+      <case value="itemEmpty">
+        <say>There are no items that need to be done on your list</say>
+      </case>
+      <default> <!-- value="itemFound" -->
+        <say>The next item is [[nxtItem]]</say>
+      </default>
+    </check>
+  </choice>
+
+  <choice>
+    <expecting>what all needs to be done</expecting>
+    <expecting>what all is open on my to do</expecting>
+    <resolve value="app.listAllNeedsToBeDone(response)"/>
+  </choice>
+
+  <choice>
+    <expecting>whats all is on my to do</expecting>
+    <resolve value="app.listAllOnToDo(response)"/>
+  </choice>
+
+  <choice>
+    <expecting>mark item as checked</expecting>
+    <check value="app.markSelectedItemAsChecked(response)">
+      <case value="itemNotFound">
+        <say>Which item are you referring to</say>
+      </case>
+      <default> <!-- value="itemChecked" -->
+        <say>Marking [[checkedItem]] as done</say>
+      </default>
+    </check>
+  </choice>
+
+  <choice>
+    <expecting>mark [[itemName]] as {checked|done}</expecting>
+    <check value="app.markItemAsChecked(response, itemName)">
+      <case value="itemNotFound">
+        <say>Sorry. I could not find a match for [[itemName]]. Please try again or use a web interface.</say>
+      </case>
+      <case value="multipleItemsFound">
+        <itemList/>
+      </case>
+      <default> <!-- value="itemChecked" -->
+        <say>Marking [[checkedItem]] as done</say>
+      </default>
+    </check>
+  </choice>
+
+</app>
