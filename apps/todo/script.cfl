@@ -28,7 +28,7 @@
   <jump target="#retry"/>
   --->
 
-  <choice>
+  <choice id="addItem">
     <expecting>add [[itemName]] to the list</expecting>
     <check value="app.addItemToList(response)">
       <case value="noItem">
@@ -49,7 +49,7 @@
     </check>
   </choice>
 
-  <choice>
+  <choice id="whatsNext">
     <expecting>whats next to be done</expecting>
     <expecting>whats next on my to do</expecting>
     <check value="app.whatsNext(response)">
@@ -62,18 +62,18 @@
     </check>
   </choice>
 
-  <choice>
+  <choice id="whatsOpen">
     <expecting>what all needs to be done</expecting>
     <expecting>what all is open on my to do</expecting>
     <resolve value="app.listAllNeedsToBeDone(response)"/>
   </choice>
 
-  <choice>
+  <choice id="whatAllOnList">
     <expecting>whats all is on my to do</expecting>
     <resolve value="app.listAllOnToDo(response)"/>
   </choice>
 
-  <choice>
+  <choice id="markISelectedtemAsChecked">
     <expecting>mark item as checked</expecting>
     <check value="app.markSelectedItemAsChecked(response)">
       <case value="itemNotFound">
@@ -85,7 +85,7 @@
     </check>
   </choice>
 
-  <choice>
+  <choice id="markItemNameAsChecked">
     <expecting>mark [[itemName]] as {checked|done}</expecting>
     <check value="app.markItemAsChecked(response, itemName)">
       <case value="itemNotFound">
