@@ -1,0 +1,2 @@
+# Classify `.cfl` files as HTML
+*.cfl linguist-language=HTML
