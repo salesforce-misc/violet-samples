@@ -1,6 +1,10 @@
 /* Copyright (c) 2017-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
+//////////////////////////////////////////////////////////////////////////////
+// this is a low-level implementation of the voice-app in index.js
+//////////////////////////////////////////////////////////////////////////////
+
 'use strict';
 
 var utils = require('violet/lib/utils');
