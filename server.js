@@ -4,8 +4,6 @@ var violetSrvr = require('violet/lib/violetSrvr')();
 violetSrvr.listAppsAt('/');
 var srvrInstance = violetSrvr.createAndListen(process.env.PORT || 8080);
 
-violetSrvr = require('violet/lib/violetClientTx')(violetSrvr, srvrInstance);
-
 // violetSrvr.loadScript('tutorials/introduction.js', 'einstein');
 // violetSrvr.loadScript('scripts/diabetes-stoplight.js', 'hls');
 // violetSrvr.loadScript('scripts/sf-cases-customer.js', 'einstein');
