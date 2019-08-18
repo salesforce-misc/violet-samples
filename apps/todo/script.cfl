@@ -73,7 +73,7 @@
     <resolve value="app.listAllOnToDo(response)"/>
   </choice>
 
-  <choice id="markISelectedtemAsChecked">
+  <choice id="markSelectedtemAsChecked">
     <expecting>mark item as checked</expecting>
     <check value="app.markSelectedItemAsChecked(response)">
       <case value="itemNotFound">
