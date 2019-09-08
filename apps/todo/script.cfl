@@ -56,8 +56,11 @@
       <case value="itemEmpty">
         <say>There are no items that need to be done on your list</say>
       </case>
-      <default> <!-- value="itemFound" -->
+      <case value="itemFound">
         <say>The next item is [[nxtItem]]</say>
+      </case>
+      <default> <!-- value="err" -->
+        <say>Sorry, an unexpected error occured.</say>
       </default>
     </check>
   </choice>

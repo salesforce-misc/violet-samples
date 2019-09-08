@@ -164,6 +164,8 @@ var appController = {
 
   whatsNext: async (response) => {
     var items = await quipSvc.getItemsP(tgtDocId, /*asList*/true);
+    if (!items) return "err";
+
     items = flagItemsAsDone(items);
     var nxtItem = items.children.find(i=>{return (i.done==false);});
     if (!nxtItem) return "itemEmpty";
