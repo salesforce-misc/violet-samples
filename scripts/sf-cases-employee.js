@@ -111,7 +111,7 @@ var app = {
     return results;
   },
   checkCasesForStatusAndPriority: function *(response) {
-    var results = yield response.load('Case*', 'Owner*.Alias*', ownerAlias, "(Status = '" + response.get('caseStatus') + "' AND Priority = '" + resposne.get('casePriority') +  "')");
+    var results = yield response.load('Case*', 'Owner*.Alias*', ownerAlias, "(Status = '" + response.get('caseStatus') + "' AND Priority = '" + response.get('casePriority') +  "')");
     response.set('Cases', results);
     if (results.length == 0) {
       response.say('Sorry. You have no cases.');

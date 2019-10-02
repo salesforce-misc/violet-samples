@@ -2,6 +2,8 @@
 
 var violet = require('violet/lib/violet.js').script();
 
+var violetTime = require('violet/lib/violetTime')(violet);
+
 var violetSFStore = require('../lib/violetStoreSF.js')(violet);
 violetSFStore.store.propOfInterest = {
   'diabetesLog': ['user', 'timeOfCheckin', 'bloodSugarLvl', 'feetWounds', 'missedDosages']
