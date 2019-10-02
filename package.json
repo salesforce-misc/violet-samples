@@ -13,6 +13,9 @@
     "skills"
   ],
   "scripts": {
+    "lint": "node node_modules/eslint/bin/eslint.js scripts/",
+    "lint:watch": "node node_modules/eslint-watch/bin/esw --watch scripts/",
+    "lint:watch:changed": "node node_modules/eslint-watch/bin/esw --watch --changed scripts/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -34,6 +37,10 @@
   },
   "devDependencies": {
     "codecov": "^3.0.0",
+    "eslint": "6.5.1",
+    "eslint-plugin-import": "2.18.2",
+    "eslint-plugin-node": "10.0.0",
+    "eslint-watch": "6.0.1",
     "istanbul": "^0.4.5",
     "mocha": "^4.0.1"
   }
