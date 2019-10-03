@@ -63,13 +63,7 @@ git push heroku master
 heroku config:set SCRIPT_NAME=XXX V_SFDC_USERNAME=XXX V_SFDC_PASSWORD=XXX V_SFDC_CLIENT_ID=XXX V_SFDC_CLIENT_SECRET=XXX
 ```
 
-Once deployed you will need to use your servers settings to create a new skill at [Amazon's Skill Configuration Site](https://developer.amazon.com/edw/home.html#/skills/list). The skill will be
-using a `Custom Interaction Model`, will need values from the services skill
-configuration page.
-
-For step-by-step instructions - see here: https://salesforce.quip.com/I8YOAC3Q1UGC
-
-If you want to share a Voice Application that you have created without publishing, you might want to consider using a shared Amazon Developer account.
+Once deployed you will be able to use the web interface to register the skill on Amazon's or Google's services.
 
 ## Contribution/Supporting
 
