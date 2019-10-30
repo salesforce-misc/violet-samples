@@ -24,6 +24,7 @@ project is configured to create a skill at the `einstein` end point.
 * [Getting Started](#getting-started)
   * [Setup](#setup)
   * [Deploying](#deploying)
+  * [Developing](#developing)
 * [Contribution/Supporting](#contributionsupporting)
 
 
@@ -64,6 +65,13 @@ heroku config:set SCRIPT_NAME=XXX V_SFDC_USERNAME=XXX V_SFDC_PASSWORD=XXX V_SFDC
 ```
 
 Once deployed you will be able to use the web interface to register the skill on Amazon's or Google's services.
+
+### Developing
+
+The code here has been setup to run with `eslint`. It can be be run by doing:
+* `npm run lint` - lints the scripts folder
+* `npm run lint:watch` - watches changes in the script folder and runs lint on change
+* `npm run lint:watch:changed` - similar to lint:watch but only lints on the file changed.
 
 ## Contribution/Supporting
 
