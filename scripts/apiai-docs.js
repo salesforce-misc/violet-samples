@@ -7,12 +7,13 @@ var violet = require('violet').script();
 
 // Implementing https://docs.api.ai/docs/dialogs
 
+//-- import hotelReservationService
+
 violet.addInputTypes({
   '[[destination]]': 'AMAZON.US_CITY',
   '[[checkinDate]]': 'AMAZON.DATE',
   '[[checkoutDate]]': 'AMAZON.DATE',
 });
-
 
 violet.addPhraseEquivalents([
 ]);
@@ -21,7 +22,7 @@ violet.addPhraseEquivalents([
 violet.respondTo({
   expecting: ['Book a hotel in [[destination]] check in [[checkinDate]] check out [[checkoutDate]]'],
   resolve: (response) => {
-    addGoal('bookHotel');
+    response.addGoal('bookHotel');
   }
 });
 
@@ -52,7 +53,7 @@ violet.defineGoal({
   goal: 'checkinDate',
   prompt: ['What date', 'When are you arriving?'],
 });
-violent.respondTo({
+violet.respondTo({
     expecting: ['[[checkinDate]]', '[[checkinDate]]'],
     resolve: (response) => {
       response.set('checkinDate', response.get('checkinDate') );
@@ -64,7 +65,7 @@ violet.defineGoal({
   goal: 'checkoutDate',
   prompt: 'xxxx xxxx',
 });
-violent.respondTo({
+violet.respondTo({
     expecting: ['[[checkoutDate]]', '[[checkoutDate]]'],
     resolve: (response) => {
       response.set('checkoutDate', response.get('checkoutDate') );
@@ -76,7 +77,7 @@ violet.defineGoal({
   goal: 'destination',
   prompt: 'xxxx xxxx',
 });
-violent.respondTo({
+violet.respondTo({
     expecting: ['[[destination]]', '[[destination]]'],
     resolve: (response) => {
       response.set('destination', response.get('destination') );
