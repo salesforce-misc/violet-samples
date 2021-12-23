@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/salesforce/violet-samples#readme",
   "dependencies": {
-    "moment-timezone": "^0.5.13",
+    "moment-timezone": "^0.5.34",
     "pluralize": "^5.0.0",
     "request": "^2.81.0",
     "request-promise": "^4.2.1",
