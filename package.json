@@ -30,7 +30,7 @@
     "moment-timezone": "^0.5.13",
     "pluralize": "^5.0.0",
     "request": "^2.81.0",
-    "request-promise": "^4.2.1",
+    "request-promise": "^4.2.6",
     "soundex": "^0.2.1",
     "violet": "latest",
     "yelp-fusion": "^1.0.3"
